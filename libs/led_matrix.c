@@ -25,7 +25,7 @@ void led_matrix_init() {
 }
 
 void led_matrix_draw(unsigned int level) {
-    unsigned int mapped_level = level/20;
+    unsigned int mapped_level = (level+15)/20;
     for (unsigned int i = 0; i < PIXELS; i++) {
         unsigned int led_value = i/5 < mapped_level ? ON : OFF;
         pio_sm_put_blocking(PIO_ID, sm, led_value * BRIGHTNESS_FACTOR);
